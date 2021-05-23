@@ -6,15 +6,15 @@ import { Jumbotron, Container, CardColumns, Card, Button } from 'react-bootstrap
 // import apollo queries
 import { useQuery, useMutation } from '@apollo/react-hooks';
 import { QUERY_ME } from '../utils/queries';
-import { REMOVE_BOOK } from '../utils/mutations';
+import { REMOVE_MOVIE } from '../utils/mutations';
 
 import Auth from '../utils/auth';
-import { removeBookId } from '../utils/localStorage';
+import { removeMovieId } from '../utils/localStorage';
 
 
-const SavedBooks = () => {
+const SavedMovies = () => {
   const { loading, data } = useQuery(QUERY_ME);
-  const [removeBook, { error }] = useMutation(REMOVE_BOOK);
+  const [removeMovie, { error }] = useMutation(REMOVE_MOVIE);
 
   const userData = data?.me || {};
 
@@ -22,8 +22,8 @@ const SavedBooks = () => {
   const userDataLength = Object.keys(userData).length;
 
 
-  // create function that accepts the book's mongo _id value as param and deletes the book from the database
-  const handleDeleteBook = async (bookId) => {
+  // create function that accepts the movie's mongo _id value as param and deletes the movie from the database
+  const handleDeleteMovie = async (movieId) => {
     const token = Auth.loggedIn() ? Auth.getToken() : null;
 
     if (!token) {
@@ -31,12 +31,12 @@ const SavedBooks = () => {
     }
 
     try {
-      const { data } = await removeBook({
-        variables: { bookId },
+      const { data } = await removeMovie({
+        variables: { movieId },
       });
 
-      // upon success, remove book's id from localStorage
-      removeBookId(bookId);
+      // upon success, remove movie's id from localStorage
+      removeMovieId(movieId);
     } catch (err) {
       console.error(err);
     }
@@ -51,26 +51,27 @@ const SavedBooks = () => {
     <>
       <Jumbotron fluid className='text-light bg-dark'>
         <Container>
-          <h1>Viewing saved books!</h1>
+          <h1>Viewing saved movies!</h1>
         </Container>
       </Jumbotron>
       <Container>
         <h2>
-          {userData.savedBooks.length
-            ? `Viewing ${userData.savedBooks.length} saved ${userData.savedBooks.length === 1 ? 'book' : 'books'}:`
-            : 'You have no saved books!'}
+          {userData.savedMoviess.length
+            ? `Viewing ${userData.savedMovies.length} saved ${userData.savedMovies.length === 1 ? 'movie' : 'movies'}:`
+            : 'You have no saved movies!'}
         </h2>
         <CardColumns>
-          {userData.savedBooks.map((book) => {
+          {userData.savedMovies.map((movie) => {
             return (
-              <Card key={book.bookId} border='dark'>
-                {book.image ? <Card.Img src={book.image} alt={`The cover for ${book.title}`} variant='top' /> : null}
+              <Card key={movie.movieId} border='dark'>
+                {movie.image ? <Card.Img src={movie.image} alt={`The cover for ${movie.title}`} variant='top' /> : null}
                 <Card.Body>
-                  <Card.Title>{book.title}</Card.Title>
-                  <p className='small'>Authors: {book.authors}</p>
-                  <Card.Text>{book.description}</Card.Text>
-                  <Button className='btn-block btn-danger' onClick={() => handleDeleteBook(book.bookId)}>
-                    Delete this Book!
+                  <Card.Title>{movie.title}</Card.Title>
+                  {/* should this not be 'authors'? */}
+                  <p className='small'>Authors: {movie.authors}</p> 
+                  <Card.Text>{movie.description}</Card.Text>
+                  <Button className='btn-block btn-danger' onClick={() => handleDeleteMovie(movie.movieId)}>
+                    Delete this Movie!
                   </Button>
                 </Card.Body>
               </Card>
@@ -82,4 +83,4 @@ const SavedBooks = () => {
   );
 };
 
-export default SavedBooks;
+export default SavedMovies;
