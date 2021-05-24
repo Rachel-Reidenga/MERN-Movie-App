@@ -56,7 +56,7 @@ const SavedMovies = () => {
       </Jumbotron>
       <Container>
         <h2>
-          {userData.savedMoviess.length
+          {userData.savedMovies.length
             ? `Viewing ${userData.savedMovies.length} saved ${userData.savedMovies.length === 1 ? 'movie' : 'movies'}:`
             : 'You have no saved movies!'}
         </h2>

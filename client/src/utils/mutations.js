@@ -32,11 +32,9 @@ export const SAVE_MOVIE = gql`
       email
       savedMovies {
         movieId
-        authors
         image
         description
         title
-        link
       }
     }
   }
@@ -50,11 +48,9 @@ export const REMOVE_MOVIE = gql`
       email
       savedMovies {
         movieId
-        authors
         image
         description
         title
-        link
       }
     }
   }
