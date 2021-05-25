@@ -1,15 +1,16 @@
 const APP_PREFIX = 'Mern-Movie-';     
-const VERSION = 'version_01';
+const VERSION = 'version_02';
 const CACHE_NAME = APP_PREFIX + VERSION
 const FILES_TO_CACHE = [
-  "./index.html",
-  "./events.html",
-  "./assets/css/style.css",
-  "./assets/css/bootstrap.css",
+  'index.html',
+  'index.css',
+  'App.js',
+  // 'assets/css/style.css',
+  // 'assets/css/bootstrap.css',
 ];
 
 // Respond with cached resources
-window.self.addEventListener('fetch', function (e) {
+self.addEventListener('fetch', function (e) { /* eslint-disable-line no-restricted-globals */
   console.log('fetch request : ' + e.request.url)
   e.respondWith(
     caches.match(e.request).then(function (request) {
@@ -32,7 +33,7 @@ window.self.addEventListener('fetch', function (e) {
 
 
 // Cache resources
-window.self.addEventListener('install', function (e) {
+self.addEventListener('install', function (e) { /* eslint-disable-line no-restricted-globals */
   e.waitUntil(
     caches.open(CACHE_NAME).then(function (cache) {
       console.log('installing cache : ' + CACHE_NAME)
@@ -42,7 +43,7 @@ window.self.addEventListener('install', function (e) {
 })
 
 // Delete outdated caches
-window.self.addEventListener('activate', function (e) {
+self.addEventListener('activate', function (e) { /* eslint-disable-line no-restricted-globals */
   e.waitUntil(
     caches.keys().then(function (keyList) {
       // `keyList` contains all cache names under your username.github.io
