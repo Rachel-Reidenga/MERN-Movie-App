@@ -19,6 +19,7 @@ ReactDOM.render(
 // serviceWorker.register();
 
 if ('serviceWorker' in navigator) {
+  console.log("Service wrokers are compatible.");
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('/serviceWorker.js')
     .then(reg => {
