@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Jumbotron, Container, Col, Form, Button, Card, CardColumns } from 'react-bootstrap';
+import { Jumbotron, Container, Col, Form, Button, Card, CardColumns, Carousel } from 'react-bootstrap';
 
 import Auth from '../utils/auth';
 import { saveMovieIds, getSavedMovieIds } from '../utils/localStorage';
@@ -51,7 +51,7 @@ const SearchMovies = () => {
         image: movie.image || '',
       }));
 
-      // *******update function name and function
+      
       setSearchedMovies(movieData);
       setSearchInput('');
     } catch (err) {
@@ -102,7 +102,7 @@ const SearchMovies = () => {
                 />
               </Col>
               <Col xs={12} md={4}>
-                <Button type='submit' variant='success' size='lg'>
+                <Button type='submit' variant='info' size='lg'>
                   Submit Search
                 </Button>
               </Col>
@@ -144,6 +144,8 @@ const SearchMovies = () => {
           })}
         </CardColumns>
       </Container>
+
+
     </>
   );
 };
