@@ -3,8 +3,8 @@ const VERSION = 'version_02';
 const CACHE_NAME = APP_PREFIX + VERSION
 const FILES_TO_CACHE = [
   'index.html',
-  'index.css',
-  'App.js',
+  // 'index.css',
+  // 'App.js',
   // 'assets/css/style.css',
   // 'assets/css/bootstrap.css',
 ];
