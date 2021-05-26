@@ -1,8 +1,15 @@
-const APP_PREFIX = 'Mern-Movie-';     
+const APP_PREFIX = 'Movie-Madness-';     
 const VERSION = 'version_02';
 const CACHE_NAME = APP_PREFIX + VERSION
 const FILES_TO_CACHE = [
   'index.html',
+  'favicon.ico',
+  'manifest.json',
+  'static/js/bundle.js',
+  'static/js/0.chunk.js',
+  'static/js/main.chunk.js',
+  'logo192.png',
+  '/',
   // 'index.css',
   // 'App.js',
   // 'assets/css/style.css',
