@@ -1,3 +1,6 @@
+// const API_URL = 'https://imdb-api.com/en/API/';
+// const API_KEY = 'k_ff1514nf';
+
 import React, { useState, useEffect } from 'react';
 import { Jumbotron, Container, Col, Form, Button, Card, CardColumns } from 'react-bootstrap';
 
@@ -36,7 +39,7 @@ const SearchMovies = () => {
 
     try {
       const response = await fetch(`https://imdb-api.com/en/API/SearchMovie/k_ff1514nf/${searchInput}`);;
-      
+
 
       if (!response.ok) {
         throw new Error('something went wrong!');
@@ -74,9 +77,9 @@ const SearchMovies = () => {
 
     try {
       const { data } = await saveMovie({
-        variables: { movieData: {...movieToSave }},
+        variables: { movieData: { ...movieToSave } },
       });
-      console.log(saveMovieIds);    
+      console.log(saveMovieIds);
 
       // if movie successfully saves to user's account, save movie id to state
       setSavedMovieIds([...savedMovieIds, movieToSave.movieId]);
@@ -127,7 +130,7 @@ const SearchMovies = () => {
                 ) : null}
                 <Card.Body>
                   <Card.Title>{movie.title}</Card.Title>
-                
+
                   <Card.Text>{movie.description}</Card.Text>
                   {Auth.loggedIn() && (
                     <Button
@@ -147,6 +150,7 @@ const SearchMovies = () => {
       </Container>
     </>
   );
+
 };
 
 export default SearchMovies;

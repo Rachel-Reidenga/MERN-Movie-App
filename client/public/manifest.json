@@ -1,8 +1,4 @@
 {
-<<<<<<< HEAD
-  "short_name": "React App",
-  "name": "Create React App Sample",
-=======
   "short_name": "M-M",
   "name": "Movie Madness",
   "icons": [
@@ -22,7 +18,6 @@
       "sizes": "512x512"
     }
   ],
->>>>>>> main
   "start_url": ".",
   "display": "standalone",
   "theme_color": "#000000",
