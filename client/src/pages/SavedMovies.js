@@ -9,17 +9,18 @@ import { QUERY_ME } from '../utils/queries';
 import { REMOVE_MOVIE } from '../utils/mutations';
 
 import Auth from '../utils/auth';
-import { removeMovieId } from '../utils/localStorage';
+// import { removeMovieId } from '../utils/localStorage';
 
 
 const SavedMovies = () => {
   const { loading, data } = useQuery(QUERY_ME);
-  const [removeMovie, { error }] = useMutation(REMOVE_MOVIE);
+  // const [removeMovie] = useMutation(REMOVE_MOVIE);
+  // { error }
 
   const userData = data?.me || {};
 
   // use this to determine if `useEffect()` hook needs to run again
-  const userDataLength = Object.keys(userData).length;
+  // const userDataLength = Object.keys(userData).length;
 
 
   // create function that accepts the movie's mongo _id value as param and deletes the movie from the database
@@ -30,16 +31,16 @@ const SavedMovies = () => {
       return false;
     }
 
-    try {
-      const { data } = await removeMovie({
-        variables: { movieId },
-      });
+    // try {
+    //   const { data } = await removeMovie({
+    //     variables: { movieId },
+    //   });
 
       // upon success, remove movie's id from localStorage
-      removeMovieId(movieId);
-    } catch (err) {
-      console.error(err);
-    }
+    //   removeMovieId(movieId);
+    // } catch (err) {
+    //   console.error(err);
+    // }
   };
 
   // if data isn't here yet, say so

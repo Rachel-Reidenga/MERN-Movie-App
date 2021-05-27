@@ -17,7 +17,8 @@ const SearchMovies = () => {
   // create state to hold saved movieId values
   const [savedMovieIds, setSavedMovieIds] = useState(getSavedMovieIds());
 
-  const [saveMovie, { error }] = useMutation(SAVE_MOVIE);
+  const [saveMovie] = useMutation(SAVE_MOVIE);
+  // , { error }
 
   // set up useEffect hook to save `savedMovieIds` list to localStorage on component unmount
   // learn more here: https://reactjs.org/docs/hooks-effect.html#effects-with-cleanup

@@ -25,7 +25,7 @@ class Movie extends Component {
       this.setState({ ...state });
     } else {
       this.setState({ loading: true });
-      //first fetch the movie data and then actors
+      //first fetch the movie data and then actors... maybe
       const endpoint = `${API_URL}SearchMovie/${
         this.props.match.params.movieId
       }?api_key=${API_KEY}`;
@@ -47,27 +47,27 @@ class Movie extends Component {
             () => {
               const endpoint_credit = `${API_URL}SearchMovie/${
                 this.props.match.params.movieId
-              }/credits?api_key=${API_KEY}`;
+              }https://imdb-api.com/en/${API_KEY}`;
               fetch(endpoint_credit)
                 .then(result => result.json())
-                .then(result => {
-                  const directors = result.crew.filter(
-                    member => member.job === "Director"
-                  );
-                  this.setState(
+                // .then(result => {
+                //   const directors = result.crew.filter(
+                //     member => member.job === "Director"
+                //   );
+                //   this.setState(
+                //     {
+                //       actors: result.cast,
+                //       directors,
+                //       loading: false
+                //     },
                     {
-                      actors: result.cast,
-                      directors,
-                      loading: false
-                    },
-                    () => {
                       localStorage.setItem(
                         `${this.props.match.params.movieId}`,
                         JSON.stringify(this.state)
                       );
                     }
-                  );
-                });
+                  // );
+                // });
             }
           );
         }
@@ -78,7 +78,7 @@ class Movie extends Component {
   render() {
     return (
       <div>
-        {this.state.movie ? (
+        {/* {this.state.movie ? (
           <div>
             <Navigation movie={this.props.location.movieTitle} />
             <MovieInfo
@@ -101,7 +101,7 @@ class Movie extends Component {
               })}
             </FourColGrid>
           </div>
-        ) : null}
+        ) : null} */}
 
         {!this.state.actors && !this.state.loading ? (
           <h1>No Movie Found!</h1>
@@ -109,7 +109,8 @@ class Movie extends Component {
         {this.state.loading ? <Spinner /> : null}
       </div>
     );
-  }
-}
+  // }
+} }
+
 
 export default Movie;

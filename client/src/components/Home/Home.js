@@ -13,11 +13,11 @@ import {
 // if we have time for this...?
 
 import HeroImage from "../elements/HeroImage/HeroImage";
-import SearchBar from "../elements/SearchBar/SearchBar";
-import FourColGrid from "../elements/FourColGrid/FourColGrid";
-import MovieThumb from "../elements/MovieThumb/MovieThumb";
+// import SearchBar from "../elements/SearchBar/SearchBar";
+// import FourColGrid from "../elements/FourColGrid/FourColGrid";
+// import MovieThumb from "../elements/MovieThumb/MovieThumb";
 import LoadMoreBtn from "../elements/LoadMoreBtn/LoadMoreBtn";
-import Spinner from "../elements/Spinner/Spinner";
+// import Spinner from "../elements/Spinner/Spinner";
 
 class Home extends Component {
   state = {
@@ -26,7 +26,7 @@ class Home extends Component {
     loading: false,
     currentPage: 0,
     totalPages: 0,
-    searchTerm: ""
+    searchTitle: ""
   };
 
   componentDidMount() {
